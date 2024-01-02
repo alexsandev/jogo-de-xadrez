@@ -7,9 +7,9 @@ namespace Xadrez.Tabuleiro
         public int QuantidadeDeMovimentos { get; protected set; }
         public Tabuleiro Tabuleiro { get; set; }
 
-        public Peca(Posicao posicao, Tabuleiro tabuleiro, Cor cor)
+        public Peca(Tabuleiro tabuleiro, Cor cor)
         {
-            Posicao = posicao;
+            Posicao = null;
             Cor = cor;
             QuantidadeDeMovimentos = 0;
             Tabuleiro = tabuleiro;
