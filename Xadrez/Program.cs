@@ -1,10 +1,13 @@
-﻿namespace Xadrez
+﻿using Xadrez.Tabuleiro;
+
+namespace Xadrez
 {
     class Program
     {
         static void Main()
         {
-            Console.WriteLine("Projeto criado.");
+            Posicao posicao = new Posicao(1,32);
+            Console.WriteLine(posicao);
         }
     }
 }
