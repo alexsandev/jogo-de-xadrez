@@ -13,9 +13,9 @@ namespace Xadrez.Tabuleiro
             _pecas = new Peca[Linhas, Colunas];
         }
 
-        public Peca[,] GetPecas()
+        public Peca GetPeca(int linha, int coluna)
         {
-            return _pecas;
+            return _pecas[linha, coluna];
         }
     }
 }
