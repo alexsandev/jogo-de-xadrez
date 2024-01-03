@@ -1,4 +1,5 @@
-﻿using Xadrez.Tabuleiro;
+﻿using System;
+using Xadrez.Tabuleiro;
 using Xadrez.Xadrez;
 
 namespace Xadrez
@@ -12,6 +13,11 @@ namespace Xadrez
             tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1,3));
             tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(2,4));
             Tela.ImprimirTabuleiro(tabuleiro);
+
+            PosicaoXadrez px = new PosicaoXadrez(1, 'a');
+
+            Console.WriteLine(px);
+            Console.WriteLine(px.toPosicao());
         }
     }
 }
