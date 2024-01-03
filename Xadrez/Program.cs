@@ -8,17 +8,23 @@ namespace Xadrez
     {
         static void Main()
         {
-            Tabuleiro.Tabuleiro tabuleiro = new Tabuleiro.Tabuleiro(8,8);
+            Partida partida = new Partida();
 
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0,0));
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0,7));
-            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(0,4));
+            while(!partida.Terminada)
+            {
+                Console.Clear();
+                Tela.ImprimirTabuleiro(partida.Tabuleiro);
 
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Branca), new PosicaoXadrez('a', 1).toPosicao());
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Branca), new PosicaoXadrez('h', 1).toPosicao());
-            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Branca), new PosicaoXadrez('e', 1).toPosicao());
+                Console.WriteLine();
+                
+                Console.Write("Origem: ");
+                Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
 
-            Tela.ImprimirTabuleiro(tabuleiro);
+                Console.Write("Destino: ");
+                Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
+
+                partida.ExecutarMovimento(origem, destino);
+            }
         }
     }
 }

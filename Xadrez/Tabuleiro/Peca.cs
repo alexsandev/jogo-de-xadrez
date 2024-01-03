@@ -14,5 +14,10 @@ namespace Xadrez.Tabuleiro
             QuantidadeDeMovimentos = 0;
             Tabuleiro = tabuleiro;
         }
+
+        public void IncrementarQuantidadeDeMovimentos()
+        {
+            QuantidadeDeMovimentos++;
+        }
     }
 }
