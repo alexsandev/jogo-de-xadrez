@@ -7,10 +7,10 @@ namespace Xadrez.Xadrez
         public int Linha { get; set; }
         public char Coluna { get; set; }
 
-        public PosicaoXadrez(int linha, char coluna)
+        public PosicaoXadrez(char coluna, int linha)
         {
-            Linha = linha;
             Coluna = coluna;
+            Linha = linha;
         }
 
         public Posicao toPosicao()

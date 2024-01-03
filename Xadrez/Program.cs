@@ -9,15 +9,16 @@ namespace Xadrez
         static void Main()
         {
             Tabuleiro.Tabuleiro tabuleiro = new Tabuleiro.Tabuleiro(8,8);
+
             tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0,0));
-            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1,3));
-            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(2,4));
+            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0,7));
+            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(0,4));
+
+            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Branca), new PosicaoXadrez('a', 1).toPosicao());
+            tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Branca), new PosicaoXadrez('h', 1).toPosicao());
+            tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Branca), new PosicaoXadrez('e', 1).toPosicao());
+
             Tela.ImprimirTabuleiro(tabuleiro);
-
-            PosicaoXadrez px = new PosicaoXadrez(1, 'a');
-
-            Console.WriteLine(px);
-            Console.WriteLine(px.toPosicao());
         }
     }
 }
