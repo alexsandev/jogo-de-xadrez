@@ -6,12 +6,62 @@ namespace Xadrez.Xadrez
     {
         public Torre(Tabuleiro.Tabuleiro tabuleiro, Cor cor) : base(tabuleiro, cor)
         {
-            
+
         }
 
         public override string ToString()
         {
             return "T";
+        }
+
+        private bool PodeMover(Posicao posicao)
+        {
+            return Tabuleiro.GetPeca(posicao) == null || Tabuleiro.GetPeca(posicao).Cor != Cor;
+        }
+
+        public override bool[,] MovimentosPossiveis()
+        {
+            bool[,] matriz = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
+
+            Posicao posicao = new Posicao(0, 0);
+
+            //Norte
+            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
+            while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            {
+                matriz[posicao.Linha, posicao.Coluna] = true;
+                if(Tabuleiro.GetPeca(posicao) != null) break;
+                posicao.Linha--;
+            }
+
+            //Leste
+            posicao.DefinirValores(Posicao.Linha , Posicao.Coluna + 1);
+            while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            {
+                matriz[posicao.Linha, posicao.Coluna] = true;
+                if(Tabuleiro.GetPeca(posicao) != null) break;
+                posicao.Coluna++;
+            }
+
+            //Sul
+            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
+            while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            {
+                matriz[posicao.Linha, posicao.Coluna] = true;
+                if(Tabuleiro.GetPeca(posicao) != null) break;
+                posicao.Linha++;
+            }
+
+            //Oeste
+            posicao.DefinirValores(Posicao.Linha , Posicao.Coluna - 1);
+            while (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            {
+                matriz[posicao.Linha, posicao.Coluna] = true;
+                if(Tabuleiro.GetPeca(posicao) != null) break;
+                posicao.Coluna--;
+            }
+
+            return matriz;
         }
     }
 }
