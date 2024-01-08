@@ -14,27 +14,16 @@ namespace Xadrez
             {
                 try
                 {
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.Tabuleiro);
-                    Console.WriteLine($"\nTurno: {partida.Turno}");
-                    Console.WriteLine($"Jogador atual: {partida.JogadorAtual}");
-
-                    Console.WriteLine();
+                    Tela.ImprimirPartida(partida);
 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
                     partida.ValidarPosicaoDeOrigem(origem);
 
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.Tabuleiro, partida.Tabuleiro.GetPeca(origem).MovimentosPossiveis());
-                    Console.WriteLine($"\nTurno: {partida.Turno}");
-                    Console.WriteLine($"Jogador atual: {partida.JogadorAtual}");
-
-                    Console.WriteLine();
+                    Tela.ImprimirPartida(partida, origem);
 
                     Console.Write("Destino: ");
                     Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
-                    Console.WriteLine(destino);
                     partida.ValidarPosicaoDeDestino(origem, destino);
 
                     partida.RealizarJogada(origem, destino);

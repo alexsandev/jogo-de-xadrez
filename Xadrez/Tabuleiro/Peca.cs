@@ -27,7 +27,7 @@ namespace Xadrez.Tabuleiro
             bool[,] matriz = MovimentosPossiveis();
             for (int i = 0; i < Tabuleiro.Linhas; i++)
             {
-                for (int j = 0; j < Tabuleiro.Colunas; i++)
+                for (int j = 0; j < Tabuleiro.Colunas; j++)
                 {
                     if(matriz[i,j])
                     {

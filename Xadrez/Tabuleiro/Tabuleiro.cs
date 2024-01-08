@@ -54,7 +54,7 @@ namespace Xadrez.Tabuleiro
 
         public bool PosicaoValida(Posicao posicao)
         {
-            return posicao.Linha < 0 || posicao.Linha > Linhas - 1 || posicao.Coluna < 0 || posicao.Coluna > Colunas - 1 ? false : true;
+            return posicao.Linha < 0 || posicao.Linha >= Linhas || posicao.Coluna < 0 || posicao.Coluna >= Colunas ? false : true;
         }
 
         public void ValidarPosicao(Posicao posicao)

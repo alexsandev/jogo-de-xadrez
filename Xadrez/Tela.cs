@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xadrez.Tabuleiro;
 using Xadrez.Xadrez;
 
@@ -6,6 +8,49 @@ namespace Xadrez
 {
     public class Tela
     {
+
+        public static void ImprimirPartida(Partida partida)
+        {
+            Console.Clear();
+            ImprimirTabuleiro(partida.Tabuleiro);
+            Console.WriteLine($"\nTurno: {partida.Turno}");
+            Console.WriteLine($"Jogador atual: {partida.JogadorAtual}");
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida);
+        }
+
+        public static void ImprimirPartida(Partida partida, Posicao origem)
+        {
+            Console.Clear();
+            ImprimirTabuleiro(partida.Tabuleiro, partida.Tabuleiro.GetPeca(origem).MovimentosPossiveis());
+            Console.WriteLine($"\nTurno: {partida.Turno}");
+            Console.WriteLine($"Jogador atual: {partida.JogadorAtual}");
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida);
+        }
+
+        private static void ImprimirPecasCapturadas(Partida partida)
+        {
+            Console.WriteLine("Peças capturadas");
+            Console.Write($"Pretas: ");
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Preta));
+            Console.WriteLine();
+            Console.Write($"Brancas: ");
+            ImprimirConjunto(partida.PecasCapturadas(Cor.Branca));
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        private static void ImprimirConjunto(HashSet<Peca> pecas)
+        {
+            Console.Write("[");
+            foreach(var p in pecas)
+            {
+                Console.Write($" {p} ");
+            }
+            Console.Write("]");
+        }
+
         public static void ImprimirTabuleiro(Tabuleiro.Tabuleiro tabuleiro)
         {
             for (int i = 0; i < tabuleiro.Linhas; i++)
@@ -27,7 +72,7 @@ namespace Xadrez
                 Console.Write(8 - i);
                 for (int j = 0; j < tabuleiro.Colunas; j++)
                 {
-                    ImprimirPeca(tabuleiro.GetPeca(i, j), movimentosPossiveis[i,j]);
+                    ImprimirPeca(tabuleiro.GetPeca(i, j), movimentosPossiveis[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -37,7 +82,7 @@ namespace Xadrez
         public static void ImprimirPeca(Peca peca, bool movimento)
         {
             ConsoleColor corPadrao = Console.BackgroundColor;
-            if(movimento)
+            if (movimento)
             {
                 Console.BackgroundColor = ConsoleColor.DarkGray;
             }
