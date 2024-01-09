@@ -1,7 +1,6 @@
 using Xadrez.Tabuleiro;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Xadrez.Xadrez
 {
@@ -62,8 +61,16 @@ namespace Xadrez.Xadrez
             }
 
             Xeque = EstaEmXeque(Adversario(JogadorAtual)) ? true : false;
-            Turno++;
-            JogadorAtual = JogadorAtual == Cor.Branca ? Cor.Preta : Cor.Branca;
+
+            if(Xequemate(Adversario(JogadorAtual)))
+            {
+                Terminada = true;
+            }
+            else
+            {
+                Turno++;
+                JogadorAtual = JogadorAtual == Cor.Branca ? Cor.Preta : Cor.Branca;
+            }  
         }
 
         public void ValidarPosicaoDeOrigem(Posicao origem)
@@ -154,6 +161,37 @@ namespace Xadrez.Xadrez
                 }
             }
             return false;
+        }
+
+        private bool Xequemate(Cor cor)
+        {
+            if(!EstaEmXeque(cor))
+            {
+                return false;
+            }
+            foreach(Peca peca in PecasEmJogo(cor))
+            {
+                bool[,] movimentosPossiveis = peca.MovimentosPossiveis();
+                for(int i = 0; i < Tabuleiro.Linhas; i++)
+                {
+                    for(int j = 0; j < Tabuleiro.Colunas; j++)
+                    {
+                        if(movimentosPossiveis[i,j])
+                        {
+                            Posicao origem = peca.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutarMovimento(origem, destino);
+                            bool estaEmXeque = EstaEmXeque(cor);
+                            DesfazerMovimento(origem, destino, pecaCapturada);
+                            if(!estaEmXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }

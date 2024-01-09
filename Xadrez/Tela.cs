@@ -13,14 +13,23 @@ namespace Xadrez
         {
             Console.Clear();
             ImprimirTabuleiro(partida.Tabuleiro);
-            Console.WriteLine($"\nTurno: {partida.Turno}");
-            Console.WriteLine($"Jogador atual: {partida.JogadorAtual}");
-            if(partida.Xeque)
+            if (!partida.Terminada)
             {
-                Console.WriteLine("XEQUE!");
+                Console.WriteLine($"\nTurno: {partida.Turno}");
+                Console.WriteLine($"Jogador atual: {partida.JogadorAtual}");
+                if (partida.Xeque)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
+                Console.WriteLine();
+                ImprimirPecasCapturadas(partida);
             }
-            Console.WriteLine();
-            ImprimirPecasCapturadas(partida);
+            else
+            {
+                Console.WriteLine("\nXEQUEMATE!");
+                Console.WriteLine($"{partida.JogadorAtual} é o vencedor!");
+                Console.ReadLine();
+            }
         }
 
         public static void ImprimirPartida(Partida partida, Posicao origem)
@@ -48,7 +57,7 @@ namespace Xadrez
         private static void ImprimirConjunto(HashSet<Peca> pecas)
         {
             Console.Write("[");
-            foreach(var p in pecas)
+            foreach (var p in pecas)
             {
                 Console.Write($" {p} ");
             }

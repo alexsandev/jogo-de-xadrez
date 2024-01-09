@@ -35,6 +35,8 @@ namespace Xadrez
                     Console.ReadLine();
                 }
             }
+
+            Tela.ImprimirPartida(partida);
         }
     }
 }
