@@ -95,7 +95,7 @@ namespace Xadrez.Xadrez
 
         public void ValidarPosicaoDeDestino(Posicao origem, Posicao destino)
         {
-            if(!Tabuleiro.GetPeca(origem).PodeMover(destino))
+            if(!Tabuleiro.GetPeca(origem).MovimentoPossivel(destino))
             {
                 throw new TabuleiroException("A posicação de destino não é um movimento possivel!");
             }
@@ -109,9 +109,28 @@ namespace Xadrez.Xadrez
 
         private void ColocarPecas()
         {
+            //Pretas
+            ColocarNovaPeca('a', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('b', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('c', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('d', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('e', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('f', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('g', 7, new Peao(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('h', 7, new Peao(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('a', 8, new Torre(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('h', 8, new Torre(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('e', 8, new Rei(Tabuleiro, Cor.Preta));
+
+            //Brancas
+            ColocarNovaPeca('a', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('b', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('c', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('d', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('e', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('f', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('g', 2, new Peao(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('h', 2, new Peao(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('a', 1, new Torre(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('h', 1, new Torre(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('e', 1, new Rei(Tabuleiro, Cor.Branca));
