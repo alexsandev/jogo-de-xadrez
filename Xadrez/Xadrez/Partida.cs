@@ -119,11 +119,13 @@ namespace Xadrez.Xadrez
             ColocarNovaPeca('g', 7, new Peao(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('h', 7, new Peao(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('a', 8, new Torre(Tabuleiro, Cor.Preta));
-            ColocarNovaPeca('h', 8, new Torre(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('b', 8, new Cavalo(Tabuleiro, Cor.Preta)); 
             ColocarNovaPeca('c', 8, new Bispo(Tabuleiro, Cor.Preta));
-            ColocarNovaPeca('f', 8, new Bispo(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('d', 8, new Rainha(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('e', 8, new Rei(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('f', 8, new Bispo(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('g', 8, new Cavalo(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('h', 8, new Torre(Tabuleiro, Cor.Preta));
 
             //Brancas
             ColocarNovaPeca('a', 2, new Peao(Tabuleiro, Cor.Branca));
@@ -135,11 +137,13 @@ namespace Xadrez.Xadrez
             ColocarNovaPeca('g', 2, new Peao(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('h', 2, new Peao(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('a', 1, new Torre(Tabuleiro, Cor.Branca));
-            ColocarNovaPeca('h', 1, new Torre(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('b', 1, new Cavalo(Tabuleiro, Cor.Branca)); 
             ColocarNovaPeca('c', 1, new Bispo(Tabuleiro, Cor.Branca));
-            ColocarNovaPeca('f', 1, new Bispo(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('d', 1, new Rainha(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('e', 1, new Rei(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('f', 1, new Bispo(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('g', 1, new Cavalo(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('h', 1, new Torre(Tabuleiro, Cor.Branca));
         }
 
         public HashSet<Peca> PecasCapturadas(Cor cor)
