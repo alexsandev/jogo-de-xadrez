@@ -120,6 +120,8 @@ namespace Xadrez.Xadrez
             ColocarNovaPeca('h', 7, new Peao(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('a', 8, new Torre(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('h', 8, new Torre(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('c', 8, new Bispo(Tabuleiro, Cor.Preta));
+            ColocarNovaPeca('f', 8, new Bispo(Tabuleiro, Cor.Preta));
             ColocarNovaPeca('e', 8, new Rei(Tabuleiro, Cor.Preta));
 
             //Brancas
@@ -133,6 +135,8 @@ namespace Xadrez.Xadrez
             ColocarNovaPeca('h', 2, new Peao(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('a', 1, new Torre(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('h', 1, new Torre(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('c', 1, new Bispo(Tabuleiro, Cor.Branca));
+            ColocarNovaPeca('f', 1, new Bispo(Tabuleiro, Cor.Branca));
             ColocarNovaPeca('e', 1, new Rei(Tabuleiro, Cor.Branca));
         }
 
