@@ -105,16 +105,16 @@ namespace Xadrez.Xadrez
             }
 
             //En passant
-            if(peca is Peao && destino.Coluna != origem.Coluna && pecaCapturada == null)
+            if(peca is Peao && destino.Coluna != origem.Coluna && pecaCapturada == vuneravelEnPassant)
             {
+                Peca peaoCapturado = Tabuleiro.RetirarPeca(destino);
                 if(peca.Cor == Cor.Branca)
                 {
-                    Peca peaoCapturado = Tabuleiro.RetirarPeca(destino);
+                    
                     Tabuleiro.ColocarPeca(peaoCapturado, new Posicao(destino.Linha + 1, destino.Coluna));
                 }
                 else
                 {
-                    Peca peaoCapturado = Tabuleiro.RetirarPeca(destino);
                     Tabuleiro.ColocarPeca(peaoCapturado, new Posicao(destino.Linha - 1, destino.Coluna));
                 }
             }
