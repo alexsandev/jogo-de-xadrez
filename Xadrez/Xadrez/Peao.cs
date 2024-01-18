@@ -4,9 +4,11 @@ namespace Xadrez.Xadrez
 {
     public class Peao : Peca
     {
-        public Peao(Tabuleiro.Tabuleiro tabuleiro, Cor cor) : base(tabuleiro, cor)
+        private readonly Partida _partida;
+
+        public Peao(Tabuleiro.Tabuleiro tabuleiro, Cor cor, Partida partida) : base(tabuleiro, cor)
         {
-            
+            _partida = partida;
         }
 
         private bool PodeMover(Posicao posicao)
@@ -17,6 +19,11 @@ namespace Xadrez.Xadrez
         private bool ExisteInimigo(Posicao posicao)
         {
             return Tabuleiro.PosicaoValida(posicao) && Tabuleiro.GetPeca(posicao) != null && Tabuleiro.GetPeca(posicao).Cor != Cor;
+        }
+
+        private bool PossivelEnPassant(Posicao posicao)
+        {
+            return Tabuleiro.PosicaoValida(posicao) && Tabuleiro.GetPeca(posicao) == _partida.vuneravelEnPassant;
         }
 
         public override bool[,] MovimentosPossiveis()
@@ -51,6 +58,20 @@ namespace Xadrez.Xadrez
                 {
                     matriz[posicao.Linha, posicao.Coluna] = true;
                 }
+
+                if(Posicao.Linha == 3)
+                {
+                    Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
+                    if(PossivelEnPassant(esquerda))
+                    {
+                        matriz[esquerda.Linha - 1, esquerda.Coluna] = true;
+                    }
+                    Posicao direita = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
+                    if(PossivelEnPassant(direita))
+                    {
+                        matriz[direita.Linha - 1, direita.Coluna] = true;
+                    }
+                }
             }
             else
             {
@@ -79,6 +100,20 @@ namespace Xadrez.Xadrez
                 if(ExisteInimigo(posicao))
                 {
                     matriz[posicao.Linha, posicao.Coluna] = true;
+                }
+
+                if(Posicao.Linha == 4)
+                {
+                    Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
+                    if(PossivelEnPassant(esquerda))
+                    {
+                        matriz[esquerda.Linha + 1, esquerda.Coluna] = true;
+                    }
+                    Posicao direita = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
+                    if(PossivelEnPassant(direita))
+                    {
+                        matriz[direita.Linha + 1, direita.Coluna] = true;
+                    }
                 }
             }
 
