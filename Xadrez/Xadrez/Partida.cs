@@ -130,6 +130,19 @@ namespace Xadrez.Xadrez
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
 
+            Peca peca = Tabuleiro.GetPeca(destino);
+            //Promoção
+            if(peca is Peao && (peca.Posicao.Linha == 0 || peca.Posicao.Linha == 7))
+            {
+                Tabuleiro.RetirarPeca(destino);
+                _pecasEmJogo.Remove(peca);
+
+                peca = new Rainha(Tabuleiro, peca.Cor);
+
+                Tabuleiro.ColocarPeca(peca, destino);
+                _pecasEmJogo.Add(peca);
+            }
+
             Xeque = EstaEmXeque(Adversario(JogadorAtual)) ? true : false;
 
             if(Xequemate(Adversario(JogadorAtual)))
@@ -143,7 +156,6 @@ namespace Xadrez.Xadrez
             }
 
             //En passant
-            Peca peca = Tabuleiro.GetPeca(destino);
             if(peca is Peao && peca.QuantidadeDeMovimentos == 1 && (destino.Linha == origem.Linha + 2 || destino.Linha == origem.Linha - 2))
             {
                 vuneravelEnPassant = peca;
