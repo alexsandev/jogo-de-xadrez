@@ -23,7 +23,7 @@ namespace Xadrez.Xadrez
 
         private bool PossivelEnPassant(Posicao posicao)
         {
-            return Tabuleiro.PosicaoValida(posicao) && Tabuleiro.GetPeca(posicao) == _partida.vuneravelEnPassant;
+            return Tabuleiro.PosicaoValida(posicao) && Tabuleiro.GetPeca(posicao) != null && Tabuleiro.GetPeca(posicao) == _partida.vuneravelEnPassant;
         }
 
         public override bool[,] MovimentosPossiveis()
